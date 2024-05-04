@@ -625,6 +625,7 @@ GGML_CALL static const char * ggml_backend_cpu_buffer_type_get_name(ggml_backend
 GGML_CALL static ggml_backend_buffer_t ggml_backend_cpu_buffer_type_alloc_buffer(ggml_backend_buffer_type_t buft, size_t size) {
     size += TENSOR_ALIGNMENT;   // malloc may return an address that is not aligned
     void * data = malloc(size); // TODO: use GGML_ALIGNED_MALLOC (move to ggml-impl.h)
+    printf("hi %ud%\n\n", size);
     if (data == NULL) {
         fprintf(stderr, "%s: failed to allocate buffer of size %zu\n", __func__, size);
         return NULL;
@@ -2005,6 +2006,7 @@ struct ggml_backend_graph_copy ggml_backend_graph_copy(ggml_backend_t backend, s
 
     // allocate nodes
     ggml_backend_buffer_t buffer = ggml_backend_alloc_ctx_tensors(ctx_allocated, backend);
+    printf("bye %ud%\n\n", size);
     if (buffer == NULL) {
         fprintf(stderr, "failed to allocate buffer for graph copy\n");
         free(hash_set.keys);
