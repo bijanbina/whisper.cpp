@@ -2006,7 +2006,6 @@ struct ggml_backend_graph_copy ggml_backend_graph_copy(ggml_backend_t backend, s
 
     // allocate nodes
     ggml_backend_buffer_t buffer = ggml_backend_alloc_ctx_tensors(ctx_allocated, backend);
-    printf("bye %ud%\n\n", size);
     if (buffer == NULL) {
         fprintf(stderr, "failed to allocate buffer for graph copy\n");
         free(hash_set.keys);
